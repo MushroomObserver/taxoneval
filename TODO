@@ -1,0 +1,35 @@
+Switch from rvm to rbenv?
+
+Testing:
+  Switch to RSpec?
+  Read: http://andrzejonsoftware.blogspot.com/2007/05/15-tdd-steps-to-create-rails.html
+  Measure code coverage
+  Automatically running tests
+  
+Figure out a way to get alerts in infrastructure pieces update
+Understand capybara
+Understand capistrano
+Understand unicorn
+
+Plan:
+Creating a Report with a Taxon name
+  Use HAML
+Viewing a Report
+Deleting a Report
+Add Users
+Get system to ask EOL about a Taxon
+  Does it exist and what is it's URL?
+  Is it a synonym?
+  What is it's richness?
+  What are it's children?
+  What are it's descendants?
+Will reports need to be queued?
+Deploy
+Add additional reports:
+  GBIF
+  Wikipedia
+  Taxon specific reports:
+    Index Fungorum
+    MycoBank
+    MO
+    MycoPortal
