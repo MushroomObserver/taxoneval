@@ -5,16 +5,19 @@ Testing:
   Read: http://andrzejonsoftware.blogspot.com/2007/05/15-tdd-steps-to-create-rails.html
   Measure code coverage
   Automatically running tests
-  
+
+Correct process for adding a view? (HAML or ERB or slim?)
+Understand report.css.scss
+
 Figure out a way to get alerts in infrastructure pieces update
 Understand capybara
 Understand capistrano
 Understand unicorn
 
 Plan:
-Creating a Report with a Taxon name
+Creating a Report with a Taxon name (create)
   Use HAML
-Viewing a Report
+Viewing a Report (index & show)
 Deleting a Report
 Add Users
 Get system to ask EOL about a Taxon
