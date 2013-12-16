@@ -6,7 +6,6 @@ Testing:
   Measure code coverage
   Automatically running tests
 
-Correct process for adding a view? (HAML or ERB or slim?)
 Understand report.css.scss
 
 Figure out a way to get alerts in infrastructure pieces update

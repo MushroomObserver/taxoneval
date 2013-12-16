@@ -1,5 +1,10 @@
 Taxoneval::Application.routes.draw do
-  get "report/show"
+  get "show/:id" => 'report#show'
+  get "show" => 'report#index'
+  get "index" => 'report#index'
+  get "report/show/:id" => 'report#show'
+  get "report/show" => 'report#show'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
