@@ -21,6 +21,7 @@ module Taxoneval
     # config.i18n.default_locale = :de
     config.generators do |g|
       g.template_engine :haml
+      g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
     config.i18n.enforce_available_locales = true
   end

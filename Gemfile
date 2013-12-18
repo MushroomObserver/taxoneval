@@ -44,6 +44,17 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem "haml-rails"
-gem "rspec-rails", :group => [:development, :test]
 gem "mysql2"
 gem 'coveralls', require: false
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
+end

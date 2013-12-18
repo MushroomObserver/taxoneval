@@ -1,22 +1,8 @@
-Testing:
-  Measure code coverage - Overalls
-  Automatically running tests - Travis CI
-
-Understand report.css.scss
-
-Figure out a way to get alerts in infrastructure pieces update
-Understand capybara
-Understand capistrano
-Understand unicorn
-
 Plan:
-Creating a Report with a Taxon name (create)
-  Use HAML
-Viewing a Report (index & show)
-Deleting a Report
 Add Users
 Get system to ask EOL about a Taxon
   Does it exist and what is it's URL?
+    http://eol.org/api/search/Gomphidiaceae
   Is it a synonym?
   What is it's richness?
   What are it's children?
@@ -31,3 +17,9 @@ Add additional reports:
     MycoBank
     MO
     MycoPortal
+
+Understand report.css.scss
+Figure out a way to get alerts in infrastructure pieces update
+Understand capybara
+Understand capistrano
+Understand unicorn
