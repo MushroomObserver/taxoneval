@@ -1,15 +1,11 @@
 Taxoneval::Application.routes.draw do
-  get "show/:id" => 'report#show'
-  get "show" => 'report#index'
-  get "index" => 'report#index'
-  get "report/show/:id" => 'report#show'
-  get "report/show" => 'report#show'
-  
+  resources :reports
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'report#index'
+  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

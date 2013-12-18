@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131215033638) do
+ActiveRecord::Schema.define(version: 20131218001207) do
 
   create_table "reports", force: true do |t|
     t.string   "taxon"

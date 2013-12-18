@@ -1,8 +1,5 @@
-Switch from rvm to rbenv?
-
 Testing:
   Switch to RSpec?
-  Read: http://andrzejonsoftware.blogspot.com/2007/05/15-tdd-steps-to-create-rails.html
   Measure code coverage
   Automatically running tests
 

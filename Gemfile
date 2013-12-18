@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-# Use mysql as the database for Active Record
-gem 'mysql2'
+# Use sqlite3 as the database for Active Record
+gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -32,8 +32,6 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'haml'
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
@@ -45,3 +43,6 @@ gem 'haml'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem "haml-rails"
+gem "rspec-rails", :group => [:development, :test]
+gem "mysql2"
