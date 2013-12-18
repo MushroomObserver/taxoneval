@@ -1,7 +1,6 @@
 Testing:
-  Switch to RSpec?
-  Measure code coverage
-  Automatically running tests
+  Measure code coverage - Overalls
+  Automatically running tests - Travis CI
 
 Understand report.css.scss
 
