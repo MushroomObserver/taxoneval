@@ -46,3 +46,4 @@ end
 gem "haml-rails"
 gem "rspec-rails", :group => [:development, :test]
 gem "mysql2"
+gem 'coveralls', require: false
