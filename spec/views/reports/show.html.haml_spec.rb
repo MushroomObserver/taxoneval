@@ -11,5 +11,8 @@ describe "reports/show" do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/Taxon/)
+    rendered.should match(/EOL Id/)
+    rendered.should match(/EOL URL/)
+    rendered.should match(/eol.org/)
   end
 end

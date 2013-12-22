@@ -45,6 +45,8 @@ end
 # gem 'debugger', group: [:development, :test]
 gem "haml-rails"
 gem "mysql2"
+gem "httparty"
+
 gem 'coveralls', require: false
 
 group :development, :test do

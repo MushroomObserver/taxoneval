@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20131218001207) do
 
   create_table "reports", force: true do |t|
     t.string   "taxon"
+    t.integer  "eol_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

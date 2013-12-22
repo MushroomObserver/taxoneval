@@ -3,6 +3,12 @@
 %p
   %b Taxon:
   = @report.taxon
+%p
+  %b EOL Id(s):
+  = @report.reports[:eol][:ids]
+%p
+  %b EOL URL(s):
+  = @report.reports[:eol][:urls]
 
 = link_to 'Edit', edit_report_path(@report)
 \|
