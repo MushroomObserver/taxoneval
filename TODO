@@ -3,10 +3,16 @@ Add Users
 Get system to ask EOL about a Taxon
   Does it exist and what is it's URL?
     http://eol.org/api/search/Gomphidiaceae
-  Is it a synonym?
-  What is it's richness?
+  Hash of hashes
+    - Report: name, date
+    - Add taxon model: report_id, name
+    - Add taxon data: taxon_id, report_type, key, value
+  Caching results
   What are it's children?
   What are it's descendants?
+  Table layout
+  I18n
+  Is it a synonym?
 Will reports need to be queued?
 Deploy
 Add additional reports:

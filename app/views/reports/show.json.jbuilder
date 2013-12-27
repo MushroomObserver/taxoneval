@@ -1,1 +1,1 @@
-json.extract! @report, :id, :taxon, :created_at, :updated_at
+json.extract! @report, :id, :name, :created_at, :updated_at

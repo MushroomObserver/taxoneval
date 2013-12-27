@@ -1,14 +1,20 @@
 %p#notice= notice
 
 %p
-  %b Taxon:
-  = @report.taxon
+  %b Fields:
+  = @report.fields.join(", ")
 %p
   %b EOL Id(s):
-  = @report.reports[:eol][:ids]
+
 %p
   %b EOL URL(s):
-  = @report.reports[:eol][:urls]
+
+%p
+  %b EOL Richness(es):
+
+%p
+  %b EOL Identifier(s):
+
 
 = link_to 'Edit', edit_report_path(@report)
 \|

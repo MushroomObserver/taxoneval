@@ -11,13 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131218001207) do
+ActiveRecord::Schema.define(version: 20131222203558) do
 
   create_table "reports", force: true do |t|
-    t.string   "taxon"
-    t.integer  "eol_id"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "taxon_data", force: true do |t|
+    t.integer  "taxon_id"
+    t.string   "report_type"
+    t.string   "key"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "taxon_data", ["taxon_id"], name: "index_taxon_data_on_taxon_id", using: :btree
+
+  create_table "taxons", force: true do |t|
+    t.integer  "report_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "taxons", ["report_id"], name: "index_taxons_on_report_id", using: :btree
 
 end

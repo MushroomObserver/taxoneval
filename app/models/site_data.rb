@@ -7,7 +7,11 @@ class SiteData
   def [](key); @hash[key]; end
   
   def get_api_result(url, keys)
-    process_response(HTTParty.get(url), keys)
+    begin
+      process_response(HTTParty.get(url), keys)
+    rescue SocketError
+      nil
+    end
   end
 
   def process_response(response, keys)

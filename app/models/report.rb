@@ -1,7 +1,8 @@
 class Report < ActiveRecord::Base
-  validates :taxon, presence: true
+  validates :name, presence: true
+  has_many :taxons
   
-  def reports
-    { :eol => EolData.new(taxon)}
+  def fields
+    ["No Fields Yet"]
   end
 end

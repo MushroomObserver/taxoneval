@@ -1,14 +1,22 @@
 require 'spec_helper'
 
 describe EolData do
-  it "has a search url" do
-    ed = EolData.new('Gomphidiaceae')
-    ed.search_url.should == "http://eol.org/api/search/Gomphidiaceae.json?exact=1"
-  end
+  subject(:eoldata) { EolData.new(taxon) }
   
-  it "has an id" do
-    ed = EolData.new('Gomphidiaceae')
-    ed[:ids].should == [5955]
-    ed[:urls].should == ["http://eol.org/5955"]
+  context "Gomphidiaceae" do
+    let(:taxon) { Taxon.new(:name => 'Gomphidiaceae') }
+  
+    it "has a search url" do
+      eoldata.search_url.should match(/api\/search\/Gomphidiaceae.json/)
+    end
+  
+    it "has a pages url" do
+      id = eoldata.ids[0]
+      eoldata.pages_url(id).should match(/api\/pages\/#{id}.json/)
+    end
+  
+    it "has at least one id" do
+      eoldata.ids.length.should > 0
+    end
   end
 end

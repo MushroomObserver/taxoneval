@@ -23,7 +23,7 @@ describe ReportsController do
   # This should return the minimal set of attributes required to create a valid
   # Report. As you add validations to Report, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "taxon" => "MyString" } }
+  let(:valid_attributes) { { "name" => "MyString" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -85,14 +85,14 @@ describe ReportsController do
       it "assigns a newly created but unsaved report as @report" do
         # Trigger the behavior that occurs when invalid params are submitted
         Report.any_instance.stub(:save).and_return(false)
-        post :create, {:report => { "taxon" => "invalid value" }}, valid_session
+        post :create, {:report => { "name" => "invalid value" }}, valid_session
         assigns(:report).should be_a_new(Report)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Report.any_instance.stub(:save).and_return(false)
-        post :create, {:report => { "taxon" => "invalid value" }}, valid_session
+        post :create, {:report => { "name" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,8 +106,8 @@ describe ReportsController do
         # specifies that the Report created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Report.any_instance.should_receive(:update).with({ "taxon" => "MyString" })
-        put :update, {:id => report.to_param, :report => { "taxon" => "MyString" }}, valid_session
+        Report.any_instance.should_receive(:update).with({ "name" => "MyString" })
+        put :update, {:id => report.to_param, :report => { "name" => "MyString" }}, valid_session
       end
 
       it "assigns the requested report as @report" do
@@ -128,7 +128,7 @@ describe ReportsController do
         report = Report.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Report.any_instance.stub(:save).and_return(false)
-        put :update, {:id => report.to_param, :report => { "taxon" => "invalid value" }}, valid_session
+        put :update, {:id => report.to_param, :report => { "name" => "invalid value" }}, valid_session
         assigns(:report).should eq(report)
       end
 
@@ -136,7 +136,7 @@ describe ReportsController do
         report = Report.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Report.any_instance.stub(:save).and_return(false)
-        put :update, {:id => report.to_param, :report => { "taxon" => "invalid value" }}, valid_session
+        put :update, {:id => report.to_param, :report => { "name" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
