@@ -23,4 +23,8 @@ describe SiteData do
     sd = SiteData.new
     sd.get_api_result("http://eol.org/api/search/Gomphidiaceae.json?exact=t1", ["results", "id"]).should == [5955]
   end
+  it "can deal with bad URLs" do
+    sd = SiteData.new
+    sd.get_api_result("http://this.is.a.bad.url", []).should == nil
+  end
 end

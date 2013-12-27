@@ -4,8 +4,13 @@ describe EolData do
   subject(:eoldata) { EolData.new(taxon) }
   
   context "Gomphidiaceae" do
-    let(:taxon) { Taxon.new(:name => 'Gomphidiaceae') }
+    let(:family) { 'Gomphidiaceae' }
+    let(:taxon) { Taxon.new(:name => family) }
   
+    it "has a taxon name" do
+      eoldata.taxon_name.should == family
+    end
+    
     it "has a search url" do
       eoldata.search_url.should match(/api\/search\/Gomphidiaceae.json/)
     end
