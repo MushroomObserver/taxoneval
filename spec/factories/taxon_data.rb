@@ -3,8 +3,8 @@
 FactoryGirl.define do
   factory :taxon_datum do
     taxon nil
-    report_type "MyString"
-    key "MyString"
-    value "MyString"
+    report_type "My Report Type"
+    key "My Key"
+    value "My Value"
   end
 end

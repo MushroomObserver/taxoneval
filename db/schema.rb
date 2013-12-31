@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20131222203558) do
   create_table "taxons", force: true do |t|
     t.integer  "report_id"
     t.string   "name"
+    t.integer  "eol_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

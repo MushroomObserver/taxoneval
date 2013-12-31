@@ -1,8 +1,20 @@
 %p#notice= notice
 
 %p
+  %h1= @report.name
+
+%p
+  %b Taxa:
+  = @report.taxon_list
+
+%p
+  %b Data Dump:
+  = @report.data_dump
+  
+%p
   %b Fields:
   = @report.fields.join(", ")
+  
 %p
   %b EOL Id(s):
 

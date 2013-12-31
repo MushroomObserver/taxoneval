@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "reports/new" do
   before(:each) do
     assign(:report, stub_model(Report,
-      :name => "MyString"
+      :name => "My Name"
     ).as_new_record)
   end
 

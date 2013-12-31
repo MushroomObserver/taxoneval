@@ -1,31 +1,43 @@
 class SiteData
-  def initialize
-    @hash = {}
+  def self.get_api_result(url, path); process_response(get_api_response(url), path); end
+  
+  def self.get_api_results(url, spec)
+    response = get_api_response(url)
+    if response
+      result = {}
+      spec.each do |key, path|
+        value = process_response(response, path)
+        result[key] = value if value
+      end
+      result
+    end
   end
   
-  def keys; @hash.keys; end
-  def [](key); @hash[key]; end
-  
-  def get_api_result(url, keys)
+  def self.get_api_response(url)
     begin
-      process_response(HTTParty.get(url), keys)
+      HTTParty.get(url)
     rescue SocketError
       nil
     end
   end
-
-  def process_response(response, keys)
+  
+  def self.process_response(response, keys)
     if response.class == Array
       result = []
       response.each {|r|
         s = process_response(r, keys)
-        result.push(s) unless s.nil?
+        result += s unless s.nil?
       }
-      result
+      result == [] ? nil : result
     elsif keys == []
-      response
+      response ? [response] : nil
     elsif response.respond_to?(:keys)
       process_response(response[keys[0]], keys[1..-1])
     end
+  end
+  
+  def self.log(str)
+    Rails.logger.debug(str)
+    str
   end
 end

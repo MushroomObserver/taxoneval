@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "reports/edit" do
   before(:each) do
     @report = assign(:report, stub_model(Report,
-      :name => "MyString"
+      :name => "My Name"
     ))
   end
 

@@ -1,18 +1,15 @@
 Plan:
-Add Users
 Get system to ask EOL about a Taxon
-  Does it exist and what is it's URL?
-    http://eol.org/api/search/Gomphidiaceae
-  Hash of hashes
-    - Report: name, date
-    - Add taxon model: report_id, name
-    - Add taxon data: taxon_id, report_type, key, value
-  Caching results
   What are it's children?
-  What are it's descendants?
-  Table layout
+Improve layout
+  Table layout - Fields
+  Richness
+  Ancestry?
   I18n
   Is it a synonym?
+Speed up tests
+Other data sources
+Add Users
 Will reports need to be queued?
 Deploy
 Add additional reports:

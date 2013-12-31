@@ -5,23 +5,27 @@ describe EolData do
   
   context "Gomphidiaceae" do
     let(:family) { 'Gomphidiaceae' }
-    let(:taxon) { Taxon.new(:name => family) }
+    let(:id) { EolData.default_ids[family][0] }
   
-    it "has a taxon name" do
-      eoldata.taxon_name.should == family
+    it ".get_eol_ids_from_name" do
+      expect(EolData.get_eol_ids_from_name(family)).to eq([5955])
     end
     
-    it "has a search url" do
-      eoldata.search_url.should match(/api\/search\/Gomphidiaceae.json/)
+    it ".data" do
+      expect(EolData.data(id)["scientificName"]).to eq([family])
+    end
+    
+    it ".search_url" do
+      expect(EolData.search_url(family)).to match(/api\/search\/#{family}.json/)
     end
   
-    it "has a pages url" do
-      id = eoldata.ids[0]
-      eoldata.pages_url(id).should match(/api\/pages\/#{id}.json/)
+    it ".pages_url" do
+      expect(EolData.pages_url(id)).to match(/api\/pages\/#{id}.json/)
+    end
+
+    it ".hierarchy_entries_url" do
+      expect(EolData.hierarchy_entries_url(id)).to match(/api\/hierarchy_entries\/#{id}.json/)
     end
   
-    it "has at least one id" do
-      eoldata.ids.length.should > 0
-    end
   end
 end
