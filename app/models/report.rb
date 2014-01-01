@@ -2,10 +2,6 @@ class Report < ActiveRecord::Base
   validates :name, presence: true
   has_many :taxons, -> { order(:name) }
   
-  def fields
-    []
-  end
-  
   def add_taxon_name(name)
     ids = EolData.get_eol_ids_from_name(name)
     ids.each {|id| add_eol_tree(id)} if ids
