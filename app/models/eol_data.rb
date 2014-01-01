@@ -76,11 +76,10 @@ class EolData < SiteData
   def self.data(id)
     result = get_api_results(pages_url(id), PAGES_DATA)
     if result
-      result["children"] = eol_children(result["he_ids"])
-    else
-      DEFAULT_DATA[id]
+      children = eol_children(result["he_ids"])
+      result["children"] = children if children.length > 0
     end
-    result
+    result || DEFAULT_DATA[id]
   end
   
   HE_DATA = {

@@ -15,6 +15,10 @@ describe EolData do
       expect(EolData.data(id)["scientificName"]).to eq([family])
     end
     
+    it ".data with unknown id" do
+      expect(EolData.data(0)).to eq({})
+    end
+    
     it ".search_url" do
       expect(EolData.search_url(family)).to match(/api\/search\/#{family}.json/)
     end

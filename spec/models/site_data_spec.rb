@@ -18,6 +18,10 @@ describe SiteData do
     expect(SiteData.get_api_response("http://this.is.a.bad.url")).to be_nil
   end
 
+  it ".get_api_results with bad EOL id" do
+    expect(SiteData.get_api_results("http://eol.org/api/pages/0.json", {"eol_id" => ["identifier"]})).to eq({})
+  end
+
   context "search/Gomphidiaceae" do
     let(:url) { "http://eol.org/api/search/Gomphidiaceae.json?exact=t1" }
     let(:path) { ["results", "id"] }

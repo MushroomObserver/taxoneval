@@ -23,12 +23,12 @@ class SiteData
   
   def self.process_response(response, keys)
     if response.class == Array
-      result = []
+      results = Set.new
       response.each {|r|
         s = process_response(r, keys)
-        result += s unless s.nil?
+        results += s unless s.nil?
       }
-      result == [] ? nil : result
+      results.length == 0 ? nil : results.sort
     elsif keys == []
       response ? [response] : nil
     elsif response.respond_to?(:keys)

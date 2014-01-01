@@ -13,8 +13,8 @@ describe Report do
     expect(FactoryGirl.create(:report).fields.class).to eq(Array)
   end
   
-  it ".taxon_list" do
-    expect(FactoryGirl.create(:report).taxon_list).to eq("")
+  it ".taxon_items" do
+    expect(FactoryGirl.create(:report).taxon_items).to eq([])
   end
   
   it ".eol_id_index for missing taxon" do

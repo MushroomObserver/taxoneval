@@ -1,6 +1,6 @@
 class Report < ActiveRecord::Base
   validates :name, presence: true
-  has_many :taxons
+  has_many :taxons, -> { order(:name) }
   
   def fields
     []
@@ -39,8 +39,10 @@ class Report < ActiveRecord::Base
     taxons.index {|t| t.eol_id == id}
   end
   
-  def taxon_list
-    taxons.map {|t| t.name}.join(', ')
+  def fields; ["ranks", "richness"]; end
+  
+  def taxon_items
+    taxons.map { |t| [t.name] + fields.map {|f| t.data("EolData", f).join(", ")} }
   end
   
   def data_dump

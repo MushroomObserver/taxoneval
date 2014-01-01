@@ -5,8 +5,13 @@
 
 %p
   %b Taxa:
-  = @report.taxon_list
-
+  %table
+    %tbody
+      - @report.taxon_items.each do |row|
+        %tr
+          - row.each do |column|
+            %td= column
+          
 %p
   %b Data Dump:
   = @report.data_dump
