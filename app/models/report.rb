@@ -38,7 +38,7 @@ class Report < ActiveRecord::Base
   def fields; ["ranks", "richness"]; end
   
   def taxon_items
-    taxons.map { |t| [t.name] + fields.map {|f| t.data("EolData", f).join(", ")} }
+    taxons.map { |t| [[t.name, "http://eol.org/#{t.eol_id}"]] + fields.map {|f| t.data("EolData", f).join(", ")} }
   end
   
   def data_dump

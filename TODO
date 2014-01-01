@@ -1,9 +1,9 @@
 Plan:
-Get system to ask EOL about a Taxon
-  What are it's children?
 Improve layout
   Table layout - Fields
-  Richness
+  Rank coalescing
+  Remove GBIF Nub
+  Parse names for authority and date?
   Ancestry?
   I18n
   Is it a synonym?

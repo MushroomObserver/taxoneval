@@ -11,5 +11,8 @@ require 'spec_helper'
 #   end
 # end
 describe ReportsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it ".link_to_text" do
+    expect(link_or_text("Test")).to eq("Test")
+    expect(link_or_text(["Test", "http://example.com"])).to eq("<a href=\"http://example.com\">Test</a>")
+  end
 end

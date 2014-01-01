@@ -29,4 +29,6 @@ class Taxon < ActiveRecord::Base
   end
   
   def data_dump; "Taxon: #{name}(#{id}) [" + taxon_data.map {|td| td.data_dump}.join(', ') + "]"; end
+  
+  def name_link; link_to(name, "http://eol.org/#{id}"); end
 end
