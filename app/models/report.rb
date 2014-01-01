@@ -1,6 +1,6 @@
 class Report < ActiveRecord::Base
   validates :name, presence: true
-  has_many :taxons, -> { order(:name) }
+  has_many :taxons, -> { order(:name) }, dependent: :destroy
   
   def add_taxon_name(name)
     ids = EolData.get_eol_ids_from_name(name)

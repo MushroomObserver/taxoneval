@@ -23,10 +23,17 @@ describe Report do
   
   it ".add_taxon_name" do
     report = FactoryGirl.create(:report)
+    taxa_before = Taxon.count
+    taxon_data_before = TaxonDatum.count
     species = 'Chroogomphus asiaticus'
     report.add_taxon_name(species)
     expect(report.taxons.length).to eq(1)
     expect(report.taxons[0].name).to match(/^#{species}/)
+    expect(Taxon.count).to be > taxa_before
+    expect(TaxonDatum.count).to be > taxon_data_before
+    report.destroy
+    expect(Taxon.count).to eq(taxa_before)
+    expect(TaxonDatum.count).to eq(taxon_data_before)
   end
   
   it ".add_taxon_name adds children" do

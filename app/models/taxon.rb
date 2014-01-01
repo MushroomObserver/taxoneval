@@ -10,15 +10,11 @@ class Taxon < ActiveRecord::Base
   validates :eol_id, presence: true
   validates :name, presence: true, name: true
   belongs_to :report
-  has_many :taxon_data
+  has_many :taxon_data, dependent: :destroy
   
   def add_data(report_type, data)
     data.each do |k,v|
-      if v.class == Array
-        v.each {|e| add_datum(report_type, k, e)}
-      else
-        add_datum(report_type, k, v)
-      end
+      v.each {|e| add_datum(report_type, k, e)}
     end
   end
   
