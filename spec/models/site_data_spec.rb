@@ -14,8 +14,12 @@ describe SiteData do
     expect(SiteData.process_response({"a" => 1, "b" => [{"x" => 1}, {"x" => 2}], "c" => 3}, ["b", "x"])).to eq([1,2])
   end
   
+  it ".get_api_response" do
+    expect(SiteData.get_api_response("http://eol.org/api/ping", true)).to_not be_nil
+  end
+
   it ".get_api_response with bad URL" do
-    expect(SiteData.get_api_response("http://this.is.a.bad.url")).to be_nil
+    expect(SiteData.get_api_response("http://this.is.a.bad.url", true)).to be_nil
   end
 
   it ".get_api_results with bad EOL id" do
@@ -25,10 +29,6 @@ describe SiteData do
   context "search/Gomphidiaceae" do
     let(:url) { "http://eol.org/api/search/Gomphidiaceae.json?exact=t1" }
     let(:path) { ["results", "id"] }
-
-    it ".get_api_response" do
-      expect(SiteData.get_api_response(url)).to_not be_nil
-    end
 
     it ".get_api_result" do
       expect(SiteData.get_api_result(url, path)).to eq([5955])

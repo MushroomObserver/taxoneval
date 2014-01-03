@@ -1,14 +1,13 @@
 Plan:
-Improve layout
-  Table layout - Fields
-  Rank coalescing
-  Remove GBIF Nub
-  Parse names for authority and date?
-  Sort by other fields
-  Ancestry?
-  I18n
-  Is it a synonym?
+
 Speed up tests
+
+Remove GBIF Nub
+Parse names for authority and date?
+Sort by other fields
+Ancestry?
+I18n
+Is it a synonym?
 Other data sources
 Add Users
 Will reports need to be queued?
