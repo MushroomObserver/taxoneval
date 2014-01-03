@@ -18,10 +18,10 @@ describe SiteData do
     expect(SiteData.get_api_response("http://eol.org/api/ping", true)).to_not be_nil
   end
 
-  it ".get_api_response with bad URL" do
-    expect(SiteData.get_api_response("http://this.is.a.bad.url", true)).to be_nil
+  it ".get_with_print" do
+    expect(SiteData.get_with_print("http://eol.org/api/ping")).to_not be_nil
   end
-
+  
   it ".get_api_results with bad EOL id" do
     expect(SiteData.get_api_results("http://eol.org/api/pages/0.json", {"eol_id" => ["identifier"]})).to eq({})
   end

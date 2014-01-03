@@ -45,19 +45,19 @@ class SiteData
   def self.get_api_response(url, ignore_testing=false)
     begin
       if Rails.env.test? and !ignore_testing
-        if !CANNED_RESPONSES.member?(url)
-          result = HTTParty.get(url)
-          print "'#{url}' => #{result},\n" 
-          result
-        else
-          CANNED_RESPONSES[url]
-        end
+        CANNED_RESPONSES.member?(url) ? CANNED_RESPONSES[url] : get_with_print(url)
       else
         HTTParty.get(url)
       end
     rescue SocketError
       nil
     end
+  end
+  
+  def self.get_with_print(url)
+    result = HTTParty.get(url)
+    print "'#{url}' => #{result},\n" 
+    result
   end
   
   def self.process_response(response, keys)
