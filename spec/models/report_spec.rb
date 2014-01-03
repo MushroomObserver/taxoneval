@@ -17,6 +17,10 @@ describe Report do
     expect(FactoryGirl.create(:report).taxon_items).to eq([])
   end
   
+  it ".data_dump" do
+    expect(FactoryGirl.create(:report).data_dump).to eq("")
+  end
+  
   it ".eol_id_index for missing taxon" do
     expect(FactoryGirl.create(:report).eol_id_index(0)).to be_nil
   end

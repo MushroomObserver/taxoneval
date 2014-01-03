@@ -17,11 +17,15 @@ class Taxon < ActiveRecord::Base
       v.each {|e| add_datum(report_type, k, e)}
     end
   end
-  
-  def add_datum(report_type, key, value)
-    td = TaxonDatum.new(report_type: report_type, key: key, value: value.to_s)
-    td.save
-    taxon_data << td
+
+  def add_datum(report_type, key, v)
+    value = v.to_s
+    td = TaxonDatum.where(taxon: self, report_type: report_type, key: key).first
+    unless td and td.add_value(value)
+      td = TaxonDatum.new(report_type: report_type, key: key, value: value)
+      td.save
+      taxon_data << td
+    end
   end
   
   def data(site_data_type, key)

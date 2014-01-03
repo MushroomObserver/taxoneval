@@ -4,11 +4,11 @@ Improve layout
   Rank coalescing
   Remove GBIF Nub
   Parse names for authority and date?
+  Sort by other fields
   Ancestry?
   I18n
   Is it a synonym?
 Speed up tests
-Are Taxons and TaxonDatums getting deleted?
 Other data sources
 Add Users
 Will reports need to be queued?

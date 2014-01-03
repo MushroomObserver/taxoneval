@@ -23,7 +23,8 @@ class Report < ActiveRecord::Base
   def add_taxon_by_eol_id(id)
     eol_data = EolData.data(id)
     if eol_data
-      taxon = Taxon.new(:eol_id => id, :name => eol_data["scientificName"][0])
+      name = eol_data["scientificName"] ? eol_data["scientificName"][0] : "Unknown #{id}"
+      taxon = Taxon.new(:eol_id => id, :name => name)
       taxon.save
       taxon.add_data('EolData', eol_data)
       taxons << taxon
