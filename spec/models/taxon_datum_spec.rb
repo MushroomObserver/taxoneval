@@ -14,11 +14,17 @@ describe TaxonDatum do
   end
   
   it ".add_value" do
-    td = FactoryGirl.build(:taxon_datum, report_type: "Test", key: "ranks", value: "Sp.")
-    td.add_value("Species")
-    expect(td.value).to eq("Species")
+    td = FactoryGirl.build(:taxon_datum, report_type: "Test", key: "richness", value: "1.2")
+    td.add_value("3.4")
+    expect(td.value).to eq("3.4")
   end
 
+  it ".standardize_ranks" do
+    td = FactoryGirl.build(:taxon_datum, report_type: "Test", key: "ranks", value: "Sp.")
+    td.save
+    expect(td.value).to eq("Species")
+  end
+  
   it ".data_dump" do
     expect(FactoryGirl.create(:taxon_datum).data_dump).to match(/TaxonDatum: \([0-9]+\) \[report_type: My Report Type, key: My Key, value: My Value\]/)
   end
