@@ -1,6 +1,22 @@
 require 'spec_helper'
 
+{
+  'http://eol.org/api/search/Gomphidiaceae.json?exact=t1' => {"results"=>[{"id"=>5955}]},
+}.map {|url, response| SiteData.add_canned_response(url, response)}
+
 describe SiteData do
+  context "canned response" do
+    let(:url) { "http://some.url" }
+    let(:response) { "response" }
+    it ".canned_response" do
+      expect(SiteData.has_canned_response?(url)).to be_false
+      expect(SiteData.canned_response(url)).to be_nil
+      SiteData.add_canned_response(url, response)
+      expect(SiteData.has_canned_response?(url)).to be_true
+      expect(SiteData.canned_response(url)).to eq(response)
+    end
+  end
+
   it ".process_response" do
     expect(SiteData.process_response(1, [])).to eq(Set.new([1]))
     expect(SiteData.process_response("foo", [])).to eq(Set.new(["foo"]))
