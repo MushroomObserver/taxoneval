@@ -42,8 +42,8 @@ describe Report do
   
   it ".add_taxon_name adds children" do
     report = FactoryGirl.create(:report)
-    genus = 'Chroogomphus vinicolor'
-    report.add_taxon_name(genus)
+    taxon = 'Cystogomphus'
+    report.add_taxon_name(taxon)
     expect(report.taxons.length > 1).to be_true
   end
 end

@@ -2,16 +2,22 @@ require 'spec_helper'
 
 describe SiteData do
   it ".process_response" do
-    expect(SiteData.process_response(1, [])).to eq([1])
-    expect(SiteData.process_response("foo", [])).to eq(["foo"])
-    expect(SiteData.process_response([1,2,3], [])).to eq([1,2,3])
-    expect(SiteData.process_response({"a" => 1, "b" => 2, "c" => 3}, [])).to eq([{"a" => 1, "b" => 2, "c" => 3}])
+    expect(SiteData.process_response(1, [])).to eq(Set.new([1]))
+    expect(SiteData.process_response("foo", [])).to eq(Set.new(["foo"]))
+    expect(SiteData.process_response([1,2,3], [])).to eq(Set.new([1,2,3]))
+    expect(SiteData.process_response({"a" => 1, "b" => 2, "c" => 3}, [])).to eq(Set.new([{"a" => 1, "b" => 2, "c" => 3}]))
     expect(SiteData.process_response(1, ["b"])).to be_nil
     expect(SiteData.process_response("foo", ["b"])).to be_nil
     expect(SiteData.process_response([1,2,3], ["b"])).to be_nil
     expect(SiteData.process_response([1,2,3], ["b"])).to be_nil
-    expect(SiteData.process_response({"a" => 1, "b" => 2, "c" => 3}, ["b"])).to eq([2])
-    expect(SiteData.process_response({"a" => 1, "b" => [{"x" => 1}, {"x" => 2}], "c" => 3}, ["b", "x"])).to eq([1,2])
+    expect(SiteData.process_response({"a" => 1, "b" => 2, "c" => 3}, ["b"])).to eq(Set.new([2]))
+    expect(SiteData.process_response({"a" => 1, "b" => [{"x" => 1}, {"x" => 2}], "c" => 3}, ["b", "x"])).to eq(Set.new([1,2]))
+    expect(SiteData.process_response([{"a" => 1, "b" => "x", "c" => "m"}, {"a" => 2, "b" => "y", "c" => "n"}],
+      [["a", "c"]])).to eq(Set.new([[1, "m"], [2, "n"]]))
+    expect(SiteData.process_response({
+      "A" => [{"a" => 1, "b" => "x", "c" => "m"}, {"a" => 2, "b" => "y", "c" => "n"}],
+      "B" => [{"a" => 3, "b" => "u", "c" => "o"}, {"a" => 4, "b" => "v", "c" => "p"}]
+    }, ["A", ["a", "c"]])).to eq(Set.new([[1, "m"], [2, "n"]]))
   end
   
   it ".get_api_response" do
@@ -31,12 +37,12 @@ describe SiteData do
     let(:path) { ["results", "id"] }
 
     it ".get_api_result" do
-      expect(SiteData.get_api_result(url, path)).to eq([5955])
+      expect(SiteData.get_api_result(url, path)).to eq(Set.new([5955]))
     end
 
     it ".get_api_results" do
       expect(SiteData.get_api_results(url,
-             {"id" => path})).to eq({"id" => [5955]})
+             {"id" => path})).to eq({"id" => Set.new([5955])})
     end
   end
 end

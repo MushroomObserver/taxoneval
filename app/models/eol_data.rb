@@ -70,16 +70,28 @@ class EolData < SiteData
     "richness" => ["richness_score"],
     "ranks" => ["taxonConcepts", "taxonRank"],
     "scientificName" => ["scientificName"],
-    "he_ids" => ["taxonConcepts", "identifier"],
+    "he_ids" => ["taxonConcepts", ["identifier", "nameAccordingTo"]]
   }
   
   def self.data(id)
     result = get_api_results(pages_url(id), PAGES_DATA)
     if result
-      children = eol_children(result["he_ids"])
+      children = eol_children(filter_hes(result["he_ids"]))
       result["children"] = children if children.length > 0
     end
     result || DEFAULT_DATA[id]
+  end
+  
+  BAD_PROVIDERS = ["GBIF Nub Taxonomy"]
+  
+  def self.filter_hes(hes_with_provider)
+    if hes_with_provider
+      result = Set.new
+      hes_with_provider.each do |he, provider|
+        result << he unless BAD_PROVIDERS.member?(provider)
+      end
+      result
+    end
   end
   
   HE_DATA = {

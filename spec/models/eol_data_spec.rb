@@ -8,15 +8,19 @@ describe EolData do
     let(:id) { EolData.default_ids[family][0] }
   
     it ".get_eol_ids_from_name" do
-      expect(EolData.get_eol_ids_from_name(family)).to eq([5955])
+      expect(EolData.get_eol_ids_from_name(family)).to eq(Set.new([5955]))
     end
     
     it ".data" do
-      expect(EolData.data(id)["scientificName"]).to eq([family])
+      expect(EolData.data(id)["scientificName"]).to eq(Set.new([family]))
     end
     
     it ".data with unknown id" do
       expect(EolData.data(0)).to eq({})
+    end
+    
+    it ".filter_hes" do
+      expect(EolData.filter_hes(Set.new([[1, "ITIS"], [2, "GBIF Nub Taxonomy"], [3, "Index Fungorum"]]))).to eq(Set.new([1,3]))
     end
     
     it ".search_url" do
