@@ -1,7 +1,7 @@
 class NameValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     unless value =~ /^[A-Z]/
-      record.errors[attribute] << (options[:message] || "does not start with a capital letter")
+      record.errors[attribute] << (options[:message] || I18n.t('no_initial_cap'))
     end
   end
 end

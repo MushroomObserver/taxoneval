@@ -1,7 +1,7 @@
-%h1 Editing report
+%h1= t('report_editing')
 
 = render 'form'
 
-= link_to 'Show', @report
+= link_to t('show'), @report
 \|
-= link_to 'Back', reports_path
+= link_to t('back'), reports_path

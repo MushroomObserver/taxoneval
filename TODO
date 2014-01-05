@@ -1,12 +1,12 @@
 Plan:
 
-Speed up tests
+clean up rank
+sort by rank
+sort by richness
 
-Remove GBIF Nub
 Parse names for authority and date?
 Sort by other fields
 Ancestry?
-I18n
 Is it a synonym?
 Other data sources
 Add Users

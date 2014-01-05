@@ -20,4 +20,24 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  back: Back
+  date: Date
+  destroy: Destroy
+  edit: Edit
+  error: error
+  name: Name
+  new: New
+  new_report: 'New Report'
+  no_initial_cap: 'does not start with a capital letter'
+  no_save: prohibited this report from being saved
+  report_created: 'Report was successfully created.'
+  report_editing: 'Editing Report'
+  report_list: 'Report List'
+  report_updated: 'Report was successfully updated.'
+  ranks: Rank
+  richness: Richness
+  save: Save
+  show: Show
+  sure: 'Are you sure?'
+  taxa: Taxa
+  unknown_id: "Unknown %{id}"

@@ -1,19 +1,21 @@
-%h1 Listing reports
+%h1= t('report_list')
 
 %table
   %tr
-    %th Name
+    %th= t('date')
+    %th= t('name')
     %th
     %th
     %th
 
   - @reports.each do |report|
     %tr
+      %td= report.created_at
       %td= report.name
-      %td= link_to 'Show', report
-      %td= link_to 'Edit', edit_report_path(report)
-      %td= link_to 'Destroy', report, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to t('show'), report
+      %td= link_to t('edit'), edit_report_path(report)
+      %td= link_to t('destroy'), report, :method => :delete, :data => { :confirm => t('sure') }
 
 %br
 
-= link_to 'New Report', new_report_path
+= link_to t('new_report'), new_report_path

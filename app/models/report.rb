@@ -23,7 +23,7 @@ class Report < ActiveRecord::Base
   def add_taxon_by_eol_id(id)
     eol_data = EolData.data(id)
     if eol_data
-      name = eol_data["scientificName"] ? eol_data["scientificName"].first : "Unknown #{id}"
+      name = eol_data["scientificName"] ? eol_data["scientificName"].first : I18n.t('unknown_id', id: id)
       taxon = Taxon.new(:eol_id => id, :name => name)
       if taxon.valid?
         taxon.save
@@ -39,6 +39,10 @@ class Report < ActiveRecord::Base
   end
   
   def fields; ["ranks", "richness"]; end
+  
+  def headers
+    [I18n.t('taxa')] + fields.map{|f| I18n.t(f)}
+  end
   
   def taxon_items
     taxons.map { |t| [[t.name, "http://eol.org/#{t.eol_id}"]] + fields.map {|f| t.data("EolData", f).join(", ")} }

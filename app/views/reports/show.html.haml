@@ -1,21 +1,24 @@
 %p#notice= notice
 
-= link_to 'Edit', edit_report_path(@report)
+= link_to t('edit'), edit_report_path(@report)
 \|
-= link_to 'Back', reports_path
+= link_to t('back'), reports_path
 
 %p
   %h1= @report.name
+  = @report.created_at
 
 %p
-  %b Taxa:
   %table
     %tbody
+      %tr
+        - @report.headers.each do |header|
+          %th= header
       - @report.taxon_items.each do |row|
         %tr
           - row.each do |column|
             %td= link_or_text(column)
 
-= link_to 'Edit', edit_report_path(@report)
+= link_to t('edit'), edit_report_path(@report)
 \|
-= link_to 'Back', reports_path
+= link_to t('back'), reports_path

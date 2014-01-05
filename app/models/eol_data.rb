@@ -3,66 +3,8 @@ require 'set'
 class EolData < SiteData
   def self.report_type; return self.to_s; end
 
-  DEFAULT_IDS = {
-    "Gomphidiaceae" => [5955],
-    "Chroogomphus" => [2000],
-    "Chroogomphus rutilus" => [3000],
-    "Chroogomphus asiaticus" => [3500],
-    "Gomphidius" => [4000],
-    "Gomphidius glutinosus" => [5000]
-  }
-  
-  def self.default_ids
-    DEFAULT_IDS
-  end
-  
-  DEFAULT_DATA = {
-    5955 => {
-      "eol_id" => 5955,
-      "richness" => 1.2,
-      "ranks" => ["family"], # May want to make this deterministic
-      "scientificName" => "Gomphidiaceae", # Does authority and date need to be removed?
-      "children" => [2000, 4000]
-    },
-    2000 => {
-      "eol_id" => 2000,
-      "richness" => 2.3,
-      "ranks" => ["genus"],
-      "scientificName" => "Chroogomphus",
-      "children" => [3000]
-    },
-    3000 => {
-      "eol_id" => 3000,
-      "richness" => 3.4,
-      "ranks" => ["species"],
-      "scientificName" => "Chroogomphus rutilus",
-      "children" => []
-    },
-    3500 => {
-      "eol_id" => 3500,
-      "richness" => 3.5,
-      "ranks" => ["species"],
-      "scientificName" => "Chroogomphus asiaticus",
-      "children" => []
-    },
-    4000 => {
-      "eol_id" => 4000,
-      "richness" => 4.5,
-      "ranks" => ["genus"],
-      "scientificName" => "Gomphidius",
-      "children" => [5000]
-    },
-    5000 => {
-      "eol_id" => 5000,
-      "richness" => 5.6,
-      "ranks" => ["species"],
-      "scientificName" => "Gomphidius glutinosus",
-      "children" => []
-    },
-  }
-  
   def self.get_eol_ids_from_name(name)
-    get_api_result(search_url(name), ["results", "id"]) || DEFAULT_IDS[name]
+    get_api_result(search_url(name), ["results", "id"])
   end
   
   PAGES_DATA = {
@@ -79,7 +21,7 @@ class EolData < SiteData
       children = eol_children(filter_hes(result["he_ids"]))
       result["children"] = children if children.length > 0
     end
-    result || DEFAULT_DATA[id]
+    result
   end
   
   BAD_PROVIDERS = ["GBIF Nub Taxonomy"]

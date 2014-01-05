@@ -29,7 +29,7 @@ class ReportsController < ApplicationController
     respond_to do |format|
       if @report.save
         @report.add_taxon_name(@report.name)
-        format.html { redirect_to @report, notice: 'Report was successfully created.' }
+        format.html { redirect_to @report, notice: t('report_created') }
         format.json { render action: 'show', status: :created, location: @report }
       else
         format.html { render action: 'new' }
@@ -43,7 +43,7 @@ class ReportsController < ApplicationController
   def update
     respond_to do |format|
       if @report.update(report_params)
-        format.html { redirect_to @report, notice: 'Report was successfully updated.' }
+        format.html { redirect_to @report, notice: t('report_updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
