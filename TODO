@@ -1,10 +1,23 @@
 Plan:
 
+Make a gem out of site_data (and eol_data)
+
+Get queuing working
+CSS stuff - Compass and Zen?
+
+
+Get rid of test-ish stuff from site_data.rb: canned_responses
+  Use webmock?
+  
+Get EOL specific stuff out of report.rb
+
+
 sort by rank
 sort by richness
 
+Improve table formatting by understanding report.css.scss
+  show - separate columns more, left justify column headers
 Parse names for authority and date?
-Sort by other fields
 Ancestry?
 Is it a synonym?
 Other data sources

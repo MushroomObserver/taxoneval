@@ -1,6 +1,8 @@
 class SiteData
-  @@canned_responses = {}
   
+  # Move this into specs some how?
+  # Web mock gems?
+  @@canned_responses = {}
   def self.add_canned_response(url, response); @@canned_responses[url] = response; end
   def self.canned_response(url); @@canned_responses[url]; end
   def self.has_canned_response?(url); @@canned_responses.member?(url); end

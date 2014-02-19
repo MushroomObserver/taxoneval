@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe EolData do
-  subject(:eoldata) { EolData.new(taxon) }
-  
   it ".data with unknown id" do
     expect(EolData.data(0)).to eq({})
   end

@@ -3,8 +3,11 @@ class Report < ActiveRecord::Base
   has_many :taxons, -> { order(:name) }, dependent: :destroy
   
   def add_taxon_name(name)
+    # report = TaxonReporter.report(name)
+    # print "report.taxons.length: #{report.taxons.length}\n"
     ids = EolData.get_eol_ids_from_name(name)
     ids.each {|id| add_eol_tree(id)} if ids
+    self
   end
   
   def add_eol_tree(root_id, depth=0)
@@ -44,7 +47,7 @@ class Report < ActiveRecord::Base
     [I18n.t('taxa')] + fields.map{|f| I18n.t(f)}
   end
   
-  def taxon_items
+  def taxon_items(field=[], ascending=true)
     taxons.map { |t| [[t.name, "http://eol.org/#{t.eol_id}"]] + fields.map {|f| t.data("EolData", f).join(", ")} }
   end
   

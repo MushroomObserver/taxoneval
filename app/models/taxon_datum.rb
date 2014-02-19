@@ -26,7 +26,7 @@ class TaxonDatum < ActiveRecord::Base
   end
   
   private
-    PREFERRED_RANKS = ["Genus", "Species", "Subspecies", "Variety", "Form"]
+    PREFERRED_RANKS = ["Genus", "Species", "Infraspecies", "Subspecies", "Variety", "Form"]
   
     SHORT_RANKS = {
       'g' => 'Genus',
