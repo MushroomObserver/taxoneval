@@ -12,9 +12,10 @@ class Taxon < ActiveRecord::Base
   belongs_to :report
   has_many :taxon_data, dependent: :destroy
   
-  def add_data(report_type, data)
-    data.each do |k,v|
-      v.each {|e| add_datum(report_type, k, e)}
+  def add_records(records)
+    records.each do |r|
+      f = r.field
+      r.values.each {|v| add_datum("EolData", f.name, v)}
     end
   end
 
